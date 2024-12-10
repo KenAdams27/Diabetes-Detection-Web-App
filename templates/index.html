@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML-Diabetes Detection</title>
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+body {
+    font-family: 'Comfortaa';
+    margin: 0;
+    padding: 0;
+    color:black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px black;
+    height: 30px;
+}
+
+.one{
+    margin-right: 775px;
+}
+
+.two{
+    margin-top: 50px;
+    margin-right: 800px;
+}
+
+.three{
+    margin-right: 730px;
+    margin-top: 190px;
+}
+.four{
+    margin-left:600px ;
+}
+
+.five{
+    margin-top: 50px;
+    margin-right: 740px;
+
+}
+
+.six{
+   margin-left:600px ;
+   margin-top: -200px;
+}
+
+.seven{
+    margin-left: 690px;
+    margin-top: -210px;
+
+}
+
+.eight{
+    margin-left: 690px;
+    margin-top: 60px;
+}
+
+
+/* Header */
+header {
+    background-color:#e28413; 
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+header .navbar {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+}
+
+header .navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Main Section */
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+main h1 {
+    color: #ff9800; /* Orange color for the title */
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+main h3 {
+    color: #000022;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+main .input-field label {
+    display: block;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+main .input-field input {
+    background: transparent;
+    width: 125px;
+    padding: 10px;
+    border:none;
+    border-bottom:1px solid black;
+}
+
+main .btn {
+    margin-top: 15px;
+    background-color: #ff9800; /* Orange button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Comfortaa';
+    height: 70px;
+}
+
+main .btn:hover {
+    background-color: #e68900;
+}
+
+/* Footer */
+footer { 
+    margin-top: 30px;
+    background-color: #000022;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .container {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main .form-container {
+        flex-direction: column;
+    }
+
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer .column {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body bgcolor="#fbf5f3">
+    <header>
+        <div class="navbar">
+            <div class="logo"><h4>Data Analysis Using Python</div>
+            <a href="#">Source Code</a>
+        </div>
+    </header>
+    <main>
+    
+        <h1>Diabetes Detection</h1>
+        <h4><b>Predict the probability of Diabetes by entering a few medical values.<b></b></h4>
+        <br><br>
+        <div class="form">
+        <form action="{{ url_for('predict')}}"method="post">
+            <div class="one">
+                <label>Pregnancies :</label>
+            <input type="text" name="Pregnancies" required="required"  class="input"/>
+            </div>
+            <div class="five">
+            <label>Glucose :</label>
+            <input type="text" name="Glucose"  required="required" class="input" /><p>
+            </div>
+            <div class="two">
+               <label>Blood Pressure :</label>
+            <input type="text" name="Blood Pressure" required="required" class="input" />
+        </div>
+        <div class = "six">
+            <label>Skin Thickness :</label>
+            <input type="text" name="Skin Thickness"required="required" class="input"/><p><br>
+        </div>
+            <div class="three">
+                <label>Insulin :</label>
+            <input type="text" name="Insulin" required="required" class="input"/><br>
+        </div>
+        <div class = "seven">
+            <label>BMI :</label>
+            <input type="text" name="BMI" required="required" class="input"/><p><br>
+        </div>
+            <div class="four">
+               <label>Pedigree Value :</label>
+            <input type="text" name="Pedigree Value"  required="required" class="input"/><br>
+        </div>
+        <div class="eight">
+         <label>Age : </label>
+            <input type="text" name="Age" required="required" class="input"/><p><br>
+        </div>
+            <button type="submit" class="btn btn-primary btn-block btn-large"><b>Predict the diagnosis of Diabetes</b></button></p>
+        </form>
+    </div>
+    <h4 align="'center"><b>{{ prediction_text }}</b></h4>
+    </main>
+    <footer>
+        <div class="container">
+        <div><h3>Made by Vaibhav Pathak</h3></div>
+    </footer>
+</body>
+</html>
